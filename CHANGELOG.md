@@ -1,4 +1,6 @@
 - # 2025-04-16
+  - **04:00:31 AM**
+    - `deleteBook`
   - **03:54:58 AM**
     - `createBook`
     - `listBooks`

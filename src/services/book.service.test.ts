@@ -8,9 +8,9 @@ describe("BookService", () => {
     expect(BookService).toBeDefined();
   });
 
-  describe("create book should work", () => {
-    let createdBooksCount = 0;
+  let createdBooksCount = 0;
 
+  describe("create book should work", () => {
     it.each(
       Array.from("generate some books").map(() => ({
         author: faker.book.author(),
@@ -45,6 +45,19 @@ describe("BookService", () => {
     it("listBooks should return paginated books", async () => {
       const books = await BookService.listBooks({ page: 1, limit: 2 });
       expect(books.length).toBe(2);
+    });
+  });
+
+  describe("delete book should work", () => {
+    it.each([1, 2])("deleteBook should delete the book", async () => {
+      const book = books[0];
+      const result = await BookService.deleteBook(book.id);
+      expect(result).toBe(true);
+    });
+
+    it("deleteBook should not delete the book", async () => {
+      const result = await BookService.deleteBook("invalid-id");
+      expect(result).toBe(false);
     });
   });
 });

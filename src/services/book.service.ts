@@ -29,7 +29,16 @@ async function updateBook(
 }
 
 async function deleteBook(id: string): Promise<boolean> {
-  throw new Error("is not implemented yet");
+  await TestUtil.delay();
+  const index = books.findIndex((book) => book.id === id);
+
+  if (index === -1) {
+    return false;
+  }
+
+  books.splice(index, 1);
+
+  return true;
 }
 
 async function listBooks(
@@ -41,6 +50,7 @@ async function listBooks(
     limit = 10,
   } = pagination ?? {};
   const skip = page * limit;
+
   return books.slice(
     skip,
     skip + limit,
