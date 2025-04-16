@@ -1,5 +1,8 @@
+import { randomUUID } from "node:crypto";
+
 export const TestUtil = {
   delay,
+  uuid: () => randomUUID(),
 };
 
 /**

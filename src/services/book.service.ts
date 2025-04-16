@@ -1,9 +1,24 @@
+import { books } from "../data/books";
 import { Book } from "../models/book.model";
+import { TestUtil } from "../utils/test.util";
 
-export const BookService = {};
+export const BookService = {
+  createBook,
+  updateBook,
+  deleteBook,
+  listBooks,
+};
 
 async function createBook(data: Omit<Book, "id">): Promise<string> {
-  throw new Error("is not implemented yet");
+  await TestUtil.delay();
+  const book: Book = {
+    ...data,
+    id: TestUtil.uuid(),
+  };
+
+  books.push(book);
+
+  return book.id;
 }
 
 async function updateBook(
