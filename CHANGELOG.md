@@ -1,4 +1,6 @@
 - # 2025-04-16
+  - **04:28:43 AM**
+    - add filter to list of books
   - **04:21:29 AM**
     - `updateBook`
   - **04:00:31 AM**

@@ -1,5 +1,5 @@
 import { books } from "../data/books";
-import { Book } from "../models/book.model";
+import { Book, BookStatus } from "../models/book.model";
 import { TestUtil } from "../utils/test.util";
 
 export const BookService = {
@@ -56,16 +56,21 @@ async function deleteBook(id: string): Promise<boolean> {
 }
 
 async function listBooks(
+  filter?: { status?: BookStatus; author?: string },
   pagination?: { page?: number; limit?: number },
 ): Promise<Book[]> {
   await TestUtil.delay();
+
   const {
     page = 0,
     limit = 10,
   } = pagination ?? {};
   const skip = page * limit;
 
-  return books.slice(
+  return books.filter(({ status, author }) =>
+    (!filter?.status || filter.status === status) &&
+    (!filter?.author || filter.author === author)
+  ).slice(
     skip,
     skip + limit,
   );

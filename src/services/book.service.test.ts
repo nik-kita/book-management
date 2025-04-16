@@ -43,8 +43,13 @@ describe("BookService", () => {
     });
 
     it("listBooks should return paginated books", async () => {
-      const books = await BookService.listBooks({ page: 1, limit: 2 });
+      const books = await BookService.listBooks({}, { page: 1, limit: 2 });
       expect(books.length).toBe(2);
+    });
+
+    it('listBooks should return books with status "available"', async () => {
+      const books = await BookService.listBooks({ status: "available" });
+      expect(books.every((book) => book.status === "available")).toBe(true);
     });
   });
 
