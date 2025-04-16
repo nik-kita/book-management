@@ -1,4 +1,7 @@
 - # 2025-04-16
+  - **05:23:24 AM**
+    - draft completion of app on express
+    - extend e2e tests (not passed yet)
   - **05:11:33 AM**
     - some fixes
     - e2e for book creation
