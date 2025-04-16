@@ -25,7 +25,21 @@ async function updateBook(
   id: string,
   data: Partial<Omit<Book, "id">>,
 ): Promise<Book> {
-  throw new Error("is not implemented yet");
+  await TestUtil.delay();
+  const index = books.findIndex((book) => book.id === id);
+
+  if (index === -1) {
+    throw new Error("Book not found");
+  }
+
+  const book = books[index];
+
+  books[index] = {
+    ...book,
+    ...data,
+  };
+
+  return books[index];
 }
 
 async function deleteBook(id: string): Promise<boolean> {

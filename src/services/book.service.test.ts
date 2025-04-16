@@ -60,4 +60,20 @@ describe("BookService", () => {
       expect(result).toBe(false);
     });
   });
+
+  describe("update book should work", () => {
+    it("updateBook should update the book", async () => {
+      const book = books[0];
+      const updatedBook = await BookService.updateBook(book.id, {
+        title: "Updated Title",
+      });
+      expect(updatedBook.title).toBe("Updated Title");
+    });
+
+    it("updateBook should throw an error", async () => {
+      await expect(
+        BookService.updateBook("invalid-id", { title: "Updated Title" }),
+      ).rejects.toThrow("Book not found");
+    });
+  });
 });
