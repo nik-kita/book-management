@@ -20,7 +20,7 @@ async function updateBook(req: Request, res: Response) {
 
 async function deleteBook(req: Request, res: Response) {
   await BookService.deleteBook(req.params.id);
-  res.status(204);
+  res.status(204).send();
 }
 
 async function listBooks(req: Request, res: Response) {

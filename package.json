@@ -4,7 +4,9 @@
   "main": "dist/src/main.js",
   "scripts": {
     "test": "npx jest",
-    "dev": "nodemon src/main.ts"
+    "dev": "nodemon src/main.ts",
+    "build": "npx tsc",
+    "start": "node dist/src/main.js"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.7.0",

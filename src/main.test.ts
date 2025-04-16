@@ -1,9 +1,11 @@
 import { request } from "undici";
 import { books } from "./data/books";
+import { Book } from "./models/book.model";
 
 const URL = process.env.URL || "http://localhost:3000";
 
 describe("e2e", () => {
+  const books: Book[] = [];
   it("create book", async () => {
     const res = await request(`${URL}/books`, {
       method: "POST",
@@ -24,6 +26,7 @@ describe("e2e", () => {
     const data: any = await res.body.json();
     expect(data).toHaveProperty("items");
     expect(data?.items).toBeInstanceOf(Array);
+    books.push(...data.items);
   });
 
   it("update book", async () => {

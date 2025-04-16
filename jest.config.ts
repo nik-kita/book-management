@@ -9,4 +9,5 @@ export default {
     "^.+\\.(t|j)s$": "ts-jest",
   },
   verbose: true,
+  bail: 1,
 } satisfies Config;

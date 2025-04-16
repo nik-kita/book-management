@@ -1,4 +1,7 @@
 - # 2025-04-16
+  - #### **05:47:54 AM** draft mvp version
+    - complete minimal test requirements
+    - repair tests
   - **05:33:37 AM**
     - some updates, some fixes
   - **05:23:24 AM**

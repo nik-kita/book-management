@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { bookRouter } from "./routes/book.router";
 import morgan from "morgan";
 
@@ -9,4 +9,8 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 3000;
 
 app.use("/books", bookRouter);
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.use((err: any, req: Request, res: Response, _next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+app.listen(PORT, () => console.info(`Server running on port ${PORT}`));
