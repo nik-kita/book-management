@@ -1,10 +1,19 @@
-import { sum } from "./main";
+import { request } from "undici";
 
-describe("should work", () => {
-  it("sum function", () => {
-    const actual = sum(2, 2);
-    const expected = 4;
+const URL = process.env.URL || "http://localhost:3000";
 
-    expect(actual).toBe(expected);
+describe("e2e", () => {
+  it("create book", async () => {
+    const res = await request(`${URL}/books`, {
+      method: "POST",
+      body: JSON.stringify({
+        title: "New Book",
+        author: "Author Name",
+        year: 2023,
+        status: "available",
+      }),
+    });
+    expect(res.statusCode).toBe(201);
+    expect(await res.body.json()).toHaveProperty("id");
   });
 });

@@ -1,4 +1,7 @@
 - # 2025-04-16
+  - **05:06:16 AM**
+    - start integrate with express
+    - write e2e test for book creation (though not pass it yet)
   - **16 04:40:38 AM**
     - install express, joi
     - validation middleware
