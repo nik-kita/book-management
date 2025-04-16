@@ -1,4 +1,8 @@
 - # 2025-04-16
+  - **05:11:33 AM**
+    - some fixes
+    - e2e for book creation
+    - morgan for basic logging
   - **05:06:16 AM**
     - start integrate with express
     - write e2e test for book creation (though not pass it yet)
