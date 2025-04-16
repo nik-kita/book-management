@@ -1,4 +1,7 @@
 - # 2025-04-16
+  - **16 04:40:38 AM**
+    - install express, joi
+    - validation middleware
   - **04:28:43 AM**
     - add filter to list of books
   - **04:21:29 AM**
