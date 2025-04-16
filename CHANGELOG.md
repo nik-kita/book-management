@@ -1,4 +1,7 @@
 - # 2025-04-16
+  - **03:36:00 AM**
+    - book
+    - book service (no implementation)
   - **02:52:17 AM**
     - common files, dependencies
     - typescript
