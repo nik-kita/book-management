@@ -19,11 +19,11 @@ async function updateBook(req: Request, res: Response) {
 }
 
 async function deleteBook(req: Request, res: Response) {
-  const result = await BookService.deleteBook(req.params.id);
-  res.status(200).json(result);
+  await BookService.deleteBook(req.params.id);
+  res.status(204);
 }
 
 async function listBooks(req: Request, res: Response) {
   const books = await BookService.listBooks(req.query, req.query);
-  res.status(200).json(books);
+  res.status(200).json({ items: books });
 }

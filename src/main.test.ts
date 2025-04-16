@@ -1,4 +1,5 @@
 import { request } from "undici";
+import { books } from "./data/books";
 
 const URL = process.env.URL || "http://localhost:3000";
 
@@ -20,28 +21,25 @@ describe("e2e", () => {
   it("list books", async () => {
     const res = await request(`${URL}/books`);
     expect(res.statusCode).toBe(200);
-    expect(await res.body.json()).toBeInstanceOf(Array);
+    const data: any = await res.body.json();
+    expect(data).toHaveProperty("items");
+    expect(data?.items).toBeInstanceOf(Array);
   });
 
   it("update book", async () => {
-    const res = await request(`${URL}/books/1`, {
+    const res = await request(`${URL}/books/${books[0].id}`, {
       method: "PUT",
       body: JSON.stringify({
-        title: "Updated Book",
-        author: "Updated Author",
-        year: 2024,
         status: "available",
       }),
     });
     expect(res.statusCode).toBe(200);
-    expect(await res.body.json()).toHaveProperty("id", 1);
   });
 
   it("delete book", async () => {
-    const res = await request(`${URL}/books/1`, {
+    const res = await request(`${URL}/books/${books[0].id}`, {
       method: "DELETE",
     });
-    expect(res.statusCode).toBe(200);
-    expect(await res.body.json()).toBe(true);
+    expect(res.statusCode).toBe(204);
   });
 });

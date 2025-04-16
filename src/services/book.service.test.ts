@@ -8,7 +8,7 @@ describe("BookService", () => {
     expect(BookService).toBeDefined();
   });
 
-  let createdBooksCount = 0;
+  let createdBooksCount = books.length;
 
   describe("create book should work", () => {
     it.each(
