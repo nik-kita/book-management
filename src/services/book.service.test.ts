@@ -35,4 +35,16 @@ describe("BookService", () => {
       expect(createdBooksCount).toBe(books.length);
     });
   });
+
+  describe("list books should work", () => {
+    it("listBooks should return all books", async () => {
+      const books = await BookService.listBooks();
+      expect(books.length).toBe(books.length);
+    });
+
+    it("listBooks should return paginated books", async () => {
+      const books = await BookService.listBooks({ page: 1, limit: 2 });
+      expect(books.length).toBe(2);
+    });
+  });
 });

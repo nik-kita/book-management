@@ -1,4 +1,8 @@
 - # 2025-04-16
+  - **03:54:58 AM**
+    - `createBook`
+    - `listBooks`
+    - simple tests
   - **03:36:00 AM**
     - book
     - book service (no implementation)

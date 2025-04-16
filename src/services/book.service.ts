@@ -32,6 +32,17 @@ async function deleteBook(id: string): Promise<boolean> {
   throw new Error("is not implemented yet");
 }
 
-async function listBooks(): Promise<Book[]> {
-  throw new Error("is not implemented yet");
+async function listBooks(
+  pagination?: { page?: number; limit?: number },
+): Promise<Book[]> {
+  await TestUtil.delay();
+  const {
+    page = 0,
+    limit = 10,
+  } = pagination ?? {};
+  const skip = page * limit;
+  return books.slice(
+    skip,
+    skip + limit,
+  );
 }
